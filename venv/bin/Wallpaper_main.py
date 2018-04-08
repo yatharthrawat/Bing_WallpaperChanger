@@ -7,7 +7,6 @@ from appscript import app, mactypes
 from pathlib import Path
 import os
 
-
 # Saves the value of the System's HOME variable
 home = str(Path.home())
 # Creates a new folder named Bing_photos in the Documents directory if it has not been created
@@ -16,6 +15,9 @@ if not os.path.exists(newpath):
     os.makedirs(newpath)
 
 base_url = "http://bing.com"
+
+# Creates text file to store logs
+logfile = open(newpath+"BingWallpaper_logs", "a")
 
 # Creating BeautifulSoup object to perform web scraping
 bing = urllib.request.urlopen("http://bing.com")
@@ -32,13 +34,13 @@ r = img_url.find(".")
 q = len(img_url) - img_url[::-1].find("/")
 img_name = img_url[q:r]
 
-print("URL Located Preparing to Download...")
+logfile.write("\nURL Located Preparing to Download...")
 
 # Downloading the image in the Bing_photos folder
 f = open(newpath + img_name + ".jpg", 'wb')
 f.write(urllib.request.urlopen(base_url + img_url).read())
 f.close()
 # setting picture as the wallpaper using appscript
-print("Download Complete Preparing to Change Wallpaper...")
+logfile.write("\nDownload Complete Preparing to Change Wallpaper...")
 app('Finder').desktop_picture.set(mactypes.File(newpath + img_name + '.jpg'))
-print("Wallpaper Changed Successfully!\nWallpaper Name:" + img_name)
+logfile.write("\nWallpaper Changed Successfully!\nWallpaper Name:" + img_name+"\n")
