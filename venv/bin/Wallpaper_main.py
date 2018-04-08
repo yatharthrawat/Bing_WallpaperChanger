@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import urllib.request
 from appscript import app, mactypes
 from pathlib import Path
+import datetime
 import os
 
 # Saves the value of the System's HOME variable
@@ -34,6 +35,7 @@ r = img_url.find(".")
 q = len(img_url) - img_url[::-1].find("/")
 img_name = img_url[q:r]
 
+logfile.write("\n"+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 logfile.write("\nURL Located Preparing to Download...")
 
 # Downloading the image in the Bing_photos folder
