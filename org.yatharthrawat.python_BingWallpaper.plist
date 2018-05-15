@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <!-- The label should be the same as the filename without the extension -->
+    <string>org.yatharthrawat.python_BingWallpaper</string>
+    <!-- Specify how to run your program here -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/yatharthrawat/anaconda3/bin/python</string>
+        <string>/Users/yatharthrawat/Documents/Python_Projects/Bing_WallpaperChanger/venv/bin/Wallpaper_main.py</string>
+    </array>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>2</integer>
+        <key>Minute</key>
+        <integer>06</integer>
+    </dict>
+</dict>
+</plist>
