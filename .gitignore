@@ -1,3 +1,5 @@
 .DS_Store
 .idea
 BingWallpaper_logs
+venv/bin/history
+venv/.vscode/

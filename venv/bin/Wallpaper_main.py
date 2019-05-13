@@ -33,16 +33,18 @@ y = script_img.find(".jpg", x)
 img_url = script_img[x + len("g_img={url:") + 2:y + len(".jpg")]
 r = img_url.find(".")
 q = len(img_url) - img_url[::-1].find("/")
-img_name = img_url[q:r]
+img_name = img_url[r+1:q]
 
 logfile.write("\n"+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
 logfile.write("\nURL Located Preparing to Download...")
 
 # Downloading the image in the Bing_photos folder
-f = open(newpath + img_name + ".jpg", 'wb')
-f.write(urllib.request.urlopen(base_url + img_url).read())
+final_path = newpath + img_name
+f = open(final_path, 'wb')
+final_url = base_url + "/" + img_url
+f.write(urllib.request.urlopen(final_url).read())
 f.close()
 # setting picture as the wallpaper using appscript
 logfile.write("\nDownload Complete Preparing to Change Wallpaper...")
-app('Finder').desktop_picture.set(mactypes.File(newpath + img_name + '.jpg'))
+app('Finder').desktop_picture.set(mactypes.File(final_path))
 logfile.write("\nWallpaper Changed Successfully!\nWallpaper Name:" + img_name+"\n")
